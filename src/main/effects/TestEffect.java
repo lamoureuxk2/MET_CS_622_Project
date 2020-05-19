@@ -7,7 +7,7 @@ package main.effects;
  * @author Karl
  *
  */
-public class Test_Effect implements Effect {
+public class TestEffect implements Effect {
 
 	@Override
 	public void execute() {
