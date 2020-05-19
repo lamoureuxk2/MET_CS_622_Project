@@ -13,13 +13,13 @@ import main.effects.TestEffect;
 
 class CardTest {
 
-	private Card testInstance;
-	private String NAME = "example spell";
-	private String DESCRIPTION = "Is very magic";
-	private Effect effect = new TestEffect();
+	private static Card testInstance;
+	private static String NAME = "example spell";
+	private static String DESCRIPTION = "Is very magic";
+	private static Effect effect = new TestEffect();
 	
 	@BeforeAll
-	void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() throws Exception {
 		testInstance = new Spell(NAME, DESCRIPTION, effect);
 	}
 
