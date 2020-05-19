@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cards;
+package main.cards;
 
 /**
  * @author Karl
