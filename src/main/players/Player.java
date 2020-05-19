@@ -1,23 +1,23 @@
 /**
  * 
  */
-package players;
+package main.players;
 
-import cards.*;
+import main.cards.*;
 import java.util.*;
-import java.io.*;
 
 /**
  * @author Karl
  *
  */
-public class Player implements Serializable {
+public class Player {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private ArrayList<Card> hand = new ArrayList<>();
 	private ArrayList<Card> deck = new ArrayList<>();
+	
+	
 
 }
