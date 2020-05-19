@@ -34,11 +34,11 @@ public class Fighter extends Card {
 	}
 
 	public int getAttackStregth() {
-		return attackStregth;
+		return attackStrength;
 	}
 
 	public void setAttackStregth(int attackStregth) {
-		this.attackStregth = attackStregth;
+		this.attackStrength = attackStregth;
 	}
 
 	public int getDefenseStrength() {
