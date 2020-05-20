@@ -15,8 +15,9 @@ public class Fighter extends Card {
 	private int attackStrength;
 	private int defenseStrength;
 
-	public Fighter(String name, String desc, Effect e) {
+	public Fighter(String name, String desc, Effect e, int att, int def) {
 		super(name, desc, e);
+		this.attackStrength = att; this.defenseStrength = def;
 		// TODO Auto-generated constructor stub
 	}
 	
