@@ -12,6 +12,10 @@ import main.players.*;
  */
 public class Fighter extends Card {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2071803320340845168L;
 	private int attackStrength;
 	private int defenseStrength;
 

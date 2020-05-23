@@ -12,20 +12,20 @@ import main.effects.TestEffect;
 
 class FighterTest {
 	
-	private Fighter testInstance;
-	private String NAME = "Fighting John";
-	private String DESCRIPTION = "Is very strong";
-	private String OPPONENT_NAME = "Opponent fighter";
-	private String OPPONENT_DESCRIPTION = "Is the opponent";
-	private int attackStrength = 1000;
-	private int defenseStrength = 800;
-	private int opponentAttackStrength = 900;
-	private int opponentDefenseStrength = 700;
-	private Effect effect = new TestEffect();
+	private static Fighter testInstance;
+	private static String NAME = "Fighting John";
+	private static String DESCRIPTION = "Is very strong";
+	private static String OPPONENT_NAME = "Opponent fighter";
+	private static String OPPONENT_DESCRIPTION = "Is the opponent";
+	private static int attackStrength = 1000;
+	private static int defenseStrength = 800;
+	private static int opponentAttackStrength = 900;
+	private static int opponentDefenseStrength = 700;
+	private static Effect effect = new TestEffect();
 	
 	@BeforeAll
-	void createFighter() {
-		testInstance = new Fighter(NAME, DESCRIPTION, effect, this.attackStrength, this.defenseStrength);
+	static void createFighter() {
+		testInstance = new Fighter(NAME, DESCRIPTION, effect, attackStrength, defenseStrength);
 	}
 
 	@Test
@@ -35,8 +35,8 @@ class FighterTest {
 
 	@Test
 	void testAttackFighter() {
-		Fighter opp = new Fighter(this.OPPONENT_NAME, this.OPPONENT_DESCRIPTION, effect, this.opponentAttackStrength, this.opponentDefenseStrength);
-		int expected = this.attackStrength - this.opponentDefenseStrength;
+		Fighter opp = new Fighter(OPPONENT_NAME, OPPONENT_DESCRIPTION, effect, opponentAttackStrength, opponentDefenseStrength);
+		int expected = attackStrength - opponentDefenseStrength;
 		Assert.assertEquals(expected, testInstance.attack(opp));
 	}
 

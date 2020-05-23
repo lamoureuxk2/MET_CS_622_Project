@@ -3,14 +3,20 @@
  */
 package main.cards;
 
+import java.io.Serializable;
+
 import main.effects.Effect;
 
 /**
  * @author Karl
  *
  */
-public abstract class Card {
+public abstract class Card implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4869162516563347897L;
 	private String name;
 	private String description;
 	protected Effect effect = null;
