@@ -1,4 +1,4 @@
-package main.factories;
+package main.players;
 
 public class Player_Factory {
 
