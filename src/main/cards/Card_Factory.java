@@ -1,6 +1,9 @@
 package main.cards;
 
 import java.util.*;
+
+import main.effects.TestEffect;
+
 import java.io.*;
 
 public class Card_Factory {
@@ -112,17 +115,53 @@ public class Card_Factory {
 		}
 	}
 	
+	//TODO Enter code for adding Effects
+	
 	private Fighter createFighterObject(Scanner input, String name) {
+		System.out.println("Enter description: ");
+		String desc = input.nextLine();
+		input.reset();
+		System.out.println("Enter attack strength (int):");
+		int att;
+		int def;
 		
+		//Enter valid attack strength
+		while(true) {
+			try {
+				att = input.nextInt();
+				break;
+			}catch(Exception e) {
+				input.reset();
+				System.out.println("Must enter an int");
+			}
+		}
 		
+		//enter valid defense strength
+		while(true) {
+			try {
+				def = input.nextInt();
+				break;
+			}catch(Exception e) {
+				input.reset();
+				System.out.println("Must enter an int");
+			}
+		}
+		
+		return new Fighter(name, desc, new TestEffect(), att, def);
 	}
 	
 	private Spell createSpellObject(Scanner input, String name) {
-		
+		System.out.println("Enter description: ");
+		String desc = input.nextLine();
+		input.reset();
+		return new Spell(name, desc, new TestEffect());
 	}
 	
 	private Trap createTrapObject(Scanner input, String name) {
-		
+		System.out.println("Enter description: ");
+		String desc = input.nextLine();
+		input.reset();
+		return new Trap(name, desc, new TestEffect());
 	}
 
 }
