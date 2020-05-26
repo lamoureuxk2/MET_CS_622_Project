@@ -15,15 +15,30 @@ public class Player_Factory {
 	
 	public Player createPlayer() {
 		Scanner input = new Scanner(System.in);
-		System.out.println("Enter a name for the player:");
-		String name = input.nextLine();
-		Player player = new Player(name);
+		File player_file = null;
+		Player player = null;
 		
-		String filename = PLAYER_DIRECTORY + "/" + name + ".player";
+		while(true) {
+			System.out.println("Enter a name for the player:");
+			String name = input.nextLine();
+			player = new Player(name);
+			
+			String filename = PLAYER_DIRECTORY + "/" + name + ".player";
+			player_file = new File(filename);
+			
+			if(player_file.exists()) {
+				System.out.println("Player of that name already exists");
+				continue;
+			}
+			else {
+				break;
+			}
+		
+		}
 		
 		FileOutputStream f;
 		try {
-			f = new FileOutputStream(new File(filename));
+			f = new FileOutputStream(player_file);
 			ObjectOutputStream o = new ObjectOutputStream(f);
 			
 			o.writeObject(player);
@@ -31,9 +46,10 @@ public class Player_Factory {
 			o.close();
 			f.close();
 			
+			System.out.println(player + " created!");
+			
 			return player;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally {
