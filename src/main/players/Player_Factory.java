@@ -61,6 +61,39 @@ public class Player_Factory {
 		return null;
 	}
 	
+	public Player createPlayer(String name) {
+		File player_file = null;
+		Player player = null;
+		String filename = PLAYER_DIRECTORY + "/" + name + ".player";
+		player_file = new File(filename);
+		
+		if(player_file.exists()) {
+			System.out.println("Player of that name already exists");
+			return null;
+		}
+		else {
+			player = new Player(name);
+			FileOutputStream f;
+			try {
+				f = new FileOutputStream(player_file);
+				ObjectOutputStream o = new ObjectOutputStream(f);
+				
+				o.writeObject(player);
+				
+				o.close();
+				f.close();
+				
+				System.out.println(player + " created!");
+				
+				return player;
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+	}
+	
 	public void deletePlayer(String playerName) {
 		
 	}
