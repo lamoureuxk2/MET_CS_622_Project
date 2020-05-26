@@ -121,13 +121,14 @@ public class Card_Factory {
 		System.out.println("Enter description: ");
 		String desc = input.nextLine();
 		input.reset();
-		System.out.println("Enter attack strength (int):");
+		
 		int att;
 		int def;
 		
 		//Enter valid attack strength
 		while(true) {
 			try {
+				System.out.println("Enter attack strength (int):");
 				att = input.nextInt();
 				break;
 			}catch(InputMismatchException e) {
@@ -139,6 +140,7 @@ public class Card_Factory {
 		//enter valid defense strength
 		while(true) {
 			try {
+				System.out.println("Enter defense strength (int):");
 				def = input.nextInt();
 				break;
 			}catch(InputMismatchException e) {
