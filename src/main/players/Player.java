@@ -4,14 +4,20 @@
 package main.players;
 
 import main.cards.*;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * @author Karl
  *
  */
-public class Player {
+public class Player implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -160009562585907820L;
 	/**
 	 * 
 	 */
@@ -98,6 +104,12 @@ public class Player {
 	
 	public void increaseLP(int pts) {
 		this.lifePoints += pts;
+	}
+	
+	@Override
+	public String toString() {
+		return "Player: " + name;
+		
 	}
 
 }
