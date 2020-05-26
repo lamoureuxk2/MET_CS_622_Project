@@ -1,10 +1,128 @@
 package main.cards;
 
+import java.util.*;
+import java.io.*;
+
 public class Card_Factory {
+	
+	private static final String CARD_DIRECTORY = "card_folder";
+	private static Card_Factory factory;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		factory = new Card_Factory();
+		factory.createCard();
+	}
+	
+	public Card createCard() {
+		Scanner input = new Scanner(System.in);
+		File card_file = null;
+		String cardName = null;
+		Card card = null;
+		String cardTypeChoice;
+		
+		//Choose Spell, Fighter, or Trap
+		while(true) {
+			System.out.println("Choose Fighter (f), Spell (s), or Trap(t)");
+			String choice = input.nextLine();
+			if(choice.equals("f")) {
+				cardTypeChoice = "fighter";
+				break;
+			}
+			else if(choice.equals("s")) {
+				cardTypeChoice = "spell";
+				break;
+			}
+			else if(choice.equals("t")) {
+				cardTypeChoice = "trap";
+				break;
+			}
+			else {
+				System.out.println("Invalid choice");
+				input.reset();
+			}
+		}
+		
+		//Create valid name for the card
+		while(true) {
+			System.out.println("Enter a name for the card:");
+			cardName = input.nextLine();
+			input.reset();
+			
+			String filename = CARD_DIRECTORY + "/" + cardName + "." + cardTypeChoice;
+			card_file = new File(filename);
+			
+			if(card_file.exists()) {
+				System.out.println("Card of that name already exists");
+				continue;
+			}
+			else {
+				break;
+			}
+		}
+		
+		//Call proper method for subclass of card
+		if(cardTypeChoice.equals("fighter")) {
+			card = createFighterObject(input, cardName);
+		}
+		else if(cardTypeChoice.equals("spell")) {
+			card = createSpellObject(input, cardName);
+		}
+		else if(cardTypeChoice.equals("trap")) {
+			card = createTrapObject(input, cardName);
+		}
+		else {
+			System.out.println("cardTypeChoice is " + cardTypeChoice + ", that is an error");
+			System.exit(1);
+		}
+		
+		FileOutputStream f;
+		try {
+			f = new FileOutputStream(card_file);
+			ObjectOutputStream o = new ObjectOutputStream(f);
+			
+			o.writeObject(card);
+			
+			o.close();
+			f.close();
+			
+			System.out.println(card + " created!");
+			
+			return card;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			input.close();
+		}
+		
+		
+		
+		return null;
+	}
+	
+	public void deleteCard(String cardName) {
+		String filename = CARD_DIRECTORY + "/" + cardName + ".card";
+		File file = new File(filename);
+		if(file.exists()) {
+			file.delete();
+			System.out.println(cardName + " deleted!");
+		}
+		else {
+			System.out.println(cardName + " does not exist, nothing to delete!");
+		}
+	}
+	
+	private Fighter createFighterObject(Scanner input, String name) {
+		
+		
+	}
+	
+	private Spell createSpellObject(Scanner input, String name) {
+		
+	}
+	
+	private Trap createTrapObject(Scanner input, String name) {
+		
 	}
 
 }
