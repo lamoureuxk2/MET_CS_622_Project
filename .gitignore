@@ -1,3 +1,6 @@
 /bin/
 /target/
 *.player
+*.fighter
+*.spell
+*.trap
