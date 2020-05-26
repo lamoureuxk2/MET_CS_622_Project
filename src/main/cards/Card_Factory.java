@@ -130,7 +130,7 @@ public class Card_Factory {
 			try {
 				att = input.nextInt();
 				break;
-			}catch(Exception e) {
+			}catch(InputMismatchException e) {
 				input.reset();
 				System.out.println("Must enter an int");
 			}
@@ -141,7 +141,7 @@ public class Card_Factory {
 			try {
 				def = input.nextInt();
 				break;
-			}catch(Exception e) {
+			}catch(InputMismatchException e) {
 				input.reset();
 				System.out.println("Must enter an int");
 			}
