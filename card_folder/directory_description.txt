@@ -1,0 +1,1 @@
+This folder is where card object files are stored, for now. 
