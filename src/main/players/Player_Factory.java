@@ -95,7 +95,15 @@ public class Player_Factory {
 	}
 	
 	public void deletePlayer(String playerName) {
-		
+		String filename = PLAYER_DIRECTORY + "/" + playerName + ".player";
+		File file = new File(filename);
+		if(file.exists()) {
+			file.delete();
+			System.out.println(playerName + " deleted!");
+		}
+		else {
+			System.out.println(playerName + " does not exist, nothing to delete!");
+		}
 	}
 
 }
